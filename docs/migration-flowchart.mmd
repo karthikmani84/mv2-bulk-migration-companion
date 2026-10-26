@@ -1,0 +1,17 @@
+flowchart TD
+    A[Configure source and destination] --> B[Capture source inventory and build bounded batches]
+    B --> C[Preview and preflight one batch]
+    C --> D{Source scope and free space valid?}
+    D -->|No| X[Stop and retain files and evidence]
+    D -->|Yes| E[Download the batch with MV2]
+    E --> F[Validate staged files and calculate sizes and MD5]
+    F --> G{Existing destination objects match?}
+    G -->|Mismatch| X
+    G -->|Match or absent| H[Bulk upload any missing objects with OCI CLI]
+    H --> I{All objects match by name size and MD5?}
+    I -->|No| X
+    I -->|Yes| J[Write a verified receipt]
+    J --> K[Recheck and remove the owned local stage]
+    K --> L{More batches in this plan?}
+    L -->|Yes| C
+    L -->|No| M[Capture final inventories and reconcile]
