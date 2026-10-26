@@ -1,0 +1,33 @@
+{
+  "format_version": 1,
+  "locale": "C.UTF-8",
+  "source": {
+    "mv2_binary": "/opt/mv2bucket/mv2bucket.bin",
+    "db_unique_name": "OTHER_DATABASE",
+    "dbhome": "/opt/oracle/product/dbhome",
+    "opcfile": "/secure/source/opc_OTHER_DATABASE.ora",
+    "opcwallet": "/secure/source/cwallet.sso"
+  },
+  "target": {
+    "oci_binary": "/usr/bin/oci",
+    "endpoint": "https://objectstorage.realm-region-1.example.invalid",
+    "region": "realm-region-1",
+    "namespace": "other_destination_namespace",
+    "bucket": "other-database-backups",
+    "config_file": "/secure/target/realm-config",
+    "profile": "REALM_DESTINATION",
+    "auth": "api_key",
+    "cert_bundle": "/secure/target/operator-ca.pem"
+  },
+  "paths": {
+    "plan_dir": "/srv/mv2-migration/other-job/plan",
+    "stage_root": "/mnt/mv2-stage/other-job",
+    "state_dir": "/srv/mv2-migration/other-job/state"
+  },
+  "limits": {
+    "batch_bytes": 25000000000,
+    "reserve_bytes": 5000000000,
+    "download_parallel": 4,
+    "upload_parallel": 8
+  }
+}
