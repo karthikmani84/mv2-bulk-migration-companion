@@ -1,0 +1,35 @@
+digraph Migration {
+graph [rankdir=TB, bgcolor="white", pad="0.32", nodesep="0.32", ranksep="0.34", splines=polyline];
+node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=13, margin="0.18,0.12", color="#93b4d1", fillcolor="#edf5fc", fontcolor="#142e45", penwidth=1.2];
+edge [fontname="Helvetica", fontsize=11, color="#47657c", fontcolor="#314f66", arrowsize=0.65, penwidth=1.1];
+A [label="Configure source and\ndestination", shape=box, style="rounded,filled", fillcolor="#edf5fc", color="#93b4d1"];
+B [label="Capture source inventory and\nbuild bounded batches", shape=box, style="rounded,filled", fillcolor="#edf5fc", color="#93b4d1"];
+C [label="Preview and preflight one\nbatch", shape=box, style="rounded,filled", fillcolor="#edf5fc", color="#93b4d1"];
+D [label="Source scope and free space\nvalid?", shape=diamond, style="filled", fillcolor="#fff8e6", color="#c6aa60"];
+X [label="Stop and retain files and\nevidence", shape=box, style="rounded,filled", fillcolor="#fff1ee", color="#c36b5d"];
+E [label="Download the batch with MV2", shape=box, style="rounded,filled", fillcolor="#edf5fc", color="#93b4d1"];
+F [label="Validate staged files and\ncalculate sizes and MD5", shape=box, style="rounded,filled", fillcolor="#edf5fc", color="#93b4d1"];
+G [label="Existing destination objects\nmatch?", shape=diamond, style="filled", fillcolor="#fff8e6", color="#c6aa60"];
+H [label="Bulk upload any missing\nobjects with OCI CLI", shape=box, style="rounded,filled", fillcolor="#edf5fc", color="#93b4d1"];
+I [label="All objects match by name\nsize and MD5?", shape=diamond, style="filled", fillcolor="#fff8e6", color="#c6aa60"];
+J [label="Write a verified receipt", shape=box, style="rounded,filled", fillcolor="#edf5fc", color="#93b4d1"];
+K [label="Recheck and remove the owned\nlocal stage", shape=box, style="rounded,filled", fillcolor="#edf5fc", color="#93b4d1"];
+L [label="More batches in this plan?", shape=diamond, style="filled", fillcolor="#fff8e6", color="#c6aa60"];
+M [label="Capture final inventories\nand reconcile", shape=box, style="rounded,filled", fillcolor="#edf8ef", color="#6aa27a"];
+A -> B [label=""];
+B -> C [label=""];
+C -> D [label=""];
+D -> X [label="No", color="#b86659", fontcolor="#a2493b"];
+D -> E [label="Yes"];
+E -> F [label=""];
+F -> G [label=""];
+G -> X [label="Mismatch", color="#b86659", fontcolor="#a2493b"];
+G -> H [label="Match or absent"];
+H -> I [label=""];
+I -> X [label="No", color="#b86659", fontcolor="#a2493b"];
+I -> J [label="Yes"];
+J -> K [label=""];
+K -> L [label=""];
+L -> C [label="Yes", constraint=false];
+L -> M [label="No"];
+}
