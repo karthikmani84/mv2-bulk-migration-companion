@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.oci/
+.env
+*.ora
+*.sso
+*.pem
+*.key
+*.log
+work/
+stage/
+state/
+local-config/

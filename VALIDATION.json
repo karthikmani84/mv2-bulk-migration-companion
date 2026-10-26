@@ -1,0 +1,144 @@
+{
+  "distribution_audit": {
+    "contains_credential_files": false,
+    "contains_live_customer_artifacts": false,
+    "contains_native_mv2_binary": false,
+    "excluded_duplicate": "BLOG_MEDIUM.md",
+    "excluded_generated_files": [
+      "__pycache__/",
+      "*.pyc",
+      ".DS_Store"
+    ],
+    "fresh_sensitive_data_review": "No real customer identifiers, personal workstation paths, credential material, keys, tokens or PAR URLs found in the reviewed distribution.",
+    "generated_bytecode_policy": "Excluded; bytecode may embed workstation paths.",
+    "hidden_files_included": [
+      ".gitignore"
+    ],
+    "licensing": "No LICENSE file included; no open-source license grant is claimed.",
+    "provenance_review": "No native Oracle binary or Oracle source code is distributed; PROVENANCE.txt distinguishes the newly implemented planner/adapter from the earlier deployment.",
+    "publication_scope": "Exact 22-file reviewed distribution; no local working-directory or generated cache artifacts.",
+    "readme_disclaimer_review": "Supplementary independent utility; explicitly not MV2BUCKET, an Oracle-listed tool, an official extension or an Oracle-supported product.",
+    "reviewed_synthetic_fixtures": [
+      {
+        "file": "tests/test_config.py",
+        "line": 79,
+        "reason": "Intentionally invalid URL https://u:p@host; synthetic endpoint rejection test, not credentials."
+      }
+    ],
+    "reviewed_utc": "2026-10-26T17:47:44.841768+00:00",
+    "scanned_categories": [
+      "known_customer_identifiers_or_workstation_paths",
+      "private_key_material",
+      "api_tokens",
+      "jwt",
+      "oci_identity",
+      "par_urls",
+      "query_credentials",
+      "email_addresses"
+    ],
+    "status": "passed",
+    "text_files_screened": [
+      ".gitignore",
+      "BLOG.md",
+      "PROVENANCE.txt",
+      "README.md",
+      "docs/migration-flowchart.dot",
+      "docs/migration-flowchart.mmd",
+      "docs/migration-flowchart.svg",
+      "docs/mv2-portable-final-py312.log",
+      "docs/mv2-portable-final-py39.log",
+      "examples/job.alloy.json",
+      "examples/job.custom-realm.json",
+      "inventory.py",
+      "migration_config.py",
+      "mv2_bulk.py",
+      "mv2_plan.py",
+      "mv2_plan_adapter.py",
+      "tests/test_config.py",
+      "tests/test_planner.py",
+      "tests/test_transfer.py"
+    ]
+  },
+  "example_configuration_checks": [
+    {
+      "check_files": false,
+      "file": "examples/job.alloy.json",
+      "sha256": "72c317b75ecdd1e7f604113bc365cd9d6ef3a6d21601ad20791741560e303292",
+      "status": "passed"
+    },
+    {
+      "check_files": false,
+      "file": "examples/job.custom-realm.json",
+      "sha256": "063f6f366db82bdb65187bd9dcba8517b8435e8b76a15bcbe129c38756b779f2",
+      "status": "passed"
+    }
+  ],
+  "format_version": 1,
+  "limitations": [
+    "No live OCI Alloy or other-realm endpoint/authentication test was performed.",
+    "Installed native MV2 and OCI CLI versions require a live preview and representative pilot.",
+    "Python 3.6 grammar compatibility is not a Python 3.6 runtime execution test.",
+    "Object integrity and database restore/recovery are separate acceptance criteria."
+  ],
+  "python36_grammar_check": {
+    "files": [
+      {
+        "file": "inventory.py",
+        "sha256": "f5eabc99c9f3d71cda468114309623157c02584c27858befb8709298258a742c"
+      },
+      {
+        "file": "migration_config.py",
+        "sha256": "7c12c7f722c8c749463a93a3591716c574d4e676b6a9933a60473d094a950cfb"
+      },
+      {
+        "file": "mv2_bulk.py",
+        "sha256": "28be146dade6488b36d77272873de82f60f873ce8750cdef9df4d63ca8c63856"
+      },
+      {
+        "file": "mv2_plan.py",
+        "sha256": "a218bf5d7a2dc1b822d4ed7bc732164fed290cabb74f0042aa5d1b5d6267603a"
+      },
+      {
+        "file": "mv2_plan_adapter.py",
+        "sha256": "c535044e94df842e556b519bb272692e203b1dd7a6e3fb69233de71352bf8546"
+      },
+      {
+        "file": "tests/test_config.py",
+        "sha256": "5a95cb105c03075440ae54b615525c726291a3ff1d2c625bfbfb0258adf60bd5"
+      },
+      {
+        "file": "tests/test_planner.py",
+        "sha256": "3fcf8bc7c62a7603b6fe894dff57922a859bfe4656624349efc375efc8f39e95"
+      },
+      {
+        "file": "tests/test_transfer.py",
+        "sha256": "3d142b1e97bed518609ad4e759e9f0ad275611046cef3f5062f9beed09e4123a"
+      }
+    ],
+    "method": "ast.parse(feature_version=(3, 6))",
+    "python36_runtime_tested": false,
+    "status": "passed"
+  },
+  "scope": "Offline synthetic source/destination tools only; no database, cloud or network access.",
+  "test_runs": [
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "elapsed_seconds": 57.401,
+      "log": "docs/mv2-portable-final-py39.log",
+      "log_sha256": "a7f80ba81001902b2ef2806402ff58ca954120995d6de0a6f40a5487beb8ec80",
+      "python_version": "3.9.6",
+      "status": "passed",
+      "tests": 74
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "elapsed_seconds": 52.491,
+      "log": "docs/mv2-portable-final-py312.log",
+      "log_sha256": "8eaa220e01c5af00e8dfec6ba7183744e90d0c54c999edeea1c337bbc416cd15",
+      "python_version": "3.12.14",
+      "status": "passed",
+      "tests": 74
+    }
+  ],
+  "validated_utc": "2026-10-26T17:39:38.638806+00:00"
+}

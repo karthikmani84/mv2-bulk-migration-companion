@@ -1,0 +1,33 @@
+Reusable MV2 migration companion
+
+This is a new reusable implementation derived from the earlier customer-neutral
+engineering handoff of the working external migration companion. It does not
+modify the native MV2BUCKET executable or any deployed customer job.
+
+The original migration used a separate custom planner on its server. That
+planner was not recovered as an authoritative source file. The planner and
+trusted adapter in this package are new implementations, with their own tests;
+they must not be described as the exact code used for the original migration.
+
+The generic inventory parser is derived from the local sign-off audit work,
+including its narrow handling of native pre-table progress formatting. The
+original final sign-off audit was stopped on output formatting and was not
+reported rerun. The blog does not claim that audit completed or that all initial
+metadata objects had migration receipts.
+
+The original operator reported completion of the final catch-up batches.
+Per-batch logs supplied exact name, byte-size and MD5 verification for their
+selected objects. A restore/recovery test was not reported. The public blog
+focuses on the reusable workflow and does not explain historical volume changes.
+
+No measured before/after throughput benchmark is available. The implementation
+uses bulk-upload workers and bounded orchestration; it does not establish which
+resource or code path was the original performance bottleneck.
+
+The distribution contains no native MV2 binary, live customer plan, live
+inventory, authentication wallet, private key, customer endpoint or PAR URL.
+Obtain Oracle tools and applicable support/distribution guidance separately.
+
+Offline tests use synthetic data and simulated commands. Python 3.6 syntax
+compatibility is checked separately from execution under the local test runtime.
+No live test in another realm or Alloy deployment is claimed by this package.
