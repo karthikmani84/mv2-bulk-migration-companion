@@ -1,0 +1,33 @@
+{
+  "format_version": 1,
+  "locale": "C.UTF-8",
+  "source": {
+    "mv2_binary": "/opt/mv2bucket/mv2bucket.bin",
+    "db_unique_name": "SAMPLE_DATABASE",
+    "dbhome": "/opt/oracle/product/dbhome",
+    "opcfile": "/secure/source/opc_SAMPLE_DATABASE.ora",
+    "opcwallet": "/secure/source/cwallet.sso"
+  },
+  "target": {
+    "oci_binary": "/usr/bin/oci",
+    "endpoint": "https://objectstorage.alloy-region-1.example.invalid",
+    "region": "alloy-region-1",
+    "namespace": "destination_namespace",
+    "bucket": "database-backup-migration",
+    "config_file": "/secure/target/oci-config",
+    "profile": "DESTINATION",
+    "auth": "api_key",
+    "cert_bundle": null
+  },
+  "paths": {
+    "plan_dir": "/srv/mv2-migration/example-job/plan",
+    "stage_root": "/mnt/mv2-stage/example-job",
+    "state_dir": "/srv/mv2-migration/example-job/state"
+  },
+  "limits": {
+    "batch_bytes": 25000000000,
+    "reserve_bytes": 5000000000,
+    "download_parallel": 4,
+    "upload_parallel": 8
+  }
+}
